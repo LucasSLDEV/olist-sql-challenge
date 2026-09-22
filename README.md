@@ -58,5 +58,5 @@ Dataset da Olist baixado no Kaggle.
 Passo a Passo
 
 Clonar o Repositório:
-git clone (https://github.com/LucasSLDEV/olist-sql-challenge)
+git clone ([https://github.com/LucasSLDEV/olist-sql-challenge](https://github.com/LucasSLDEV/olist-sql-challenge))
 cd olist-sql-challenge
