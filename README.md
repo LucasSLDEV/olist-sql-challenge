@@ -1,55 +1,77 @@
-# Desafio SQL - GrowDEV | Análise de Dados E-Commerce (Olist Dataset)
+# Desafio SQL — E-Commerce Olist (GrowMarket)
 
-Este repositório contém a solução do **Desafio SQL** proposto pela GrowDEV. O objetivo central foi explorar uma base de dados real de e-commerce com cerca de 100 mil pedidos, mapear os relacionamentos entre as tabelas e responder a perguntas estratégicas de negócio por meio do uso de SQL (DQL).
-
-## 📌 Contexto do Projeto
-
-Os dados do projeto foram importados de *Olist Brazilian E-Commerce Public Dataset* (2016-2018). O principal desafio técnico envolveu trabalhar em uma base cujas chaves estrangeiras não foram declaradas formalmente no schema, exigindo a identificação dos relacionamentos diretamente através das chaves primárias e colunas equivalentes.
-
-### Competências Avaliadas
-* **Modelagem Implícita e Relacionamentos:** Identificação de cardinalidade, integridade e junções adequadas.
-* **Consultas DQL (Básico ao Avançado):** Uso de `SELECT`, `JOINs`, `GROUP BY`, `HAVING`, `Subqueries`, `CASE WHEN`, `CTEs`, `Views`, `Procedures` e `Window Functions`.
+Este repositório contém a resolução do **Desafio SQL** proposto pela **Growdev**. O objetivo do projeto é simular uma atuação real como Analista/Desenvolvedor de Dados na fictícia empresa **GrowMarket**, explorando e extraindo *insights* estratégicos de negócio a partir do *Olist Brazilian E-Commerce Public Dataset*.
 
 ---
 
-## 📂 Estrutura dos Arquivos
+## 📌 Visão Geral do Projeto
 
-Os scripts SQL foram divididos rigorosamente por blocos funcionais. Cada arquivo contém os comentários explicativos sobre cada pergunta de negócio respondida:
-
-| Arquivo | Descrição |
-| :--- | :--- |
-| `bloco_A.sql` | Consultas básicas (`SELECT`, `WHERE`, `ORDER BY`, `DISTINCT`). |
-| `bloco_B.sql` | Junções de tabelas (`INNER JOIN`, `LEFT JOIN`) e consistência relacional. |
-| `bloco_C.sql` | Agregações de métricas (`SUM`, `AVG`, `COUNT`), `GROUP BY` e filtros `HAVING`. |
-| `bloco_D.sql` | Subqueries simples, correlacionadas e filtros dinâmicos com agregadores. |
-| `bloco_E.sql` | Regras e classificações condicionais com `CASE WHEN`. |
-| `bloco_F.sql` | Estruturação de consultas com `CTE` (Common Table Expressions). |
-| `bloco_G.sql` | Construção de `Views` analíticas reutilizáveis. |
-| `bloco_H.sql` | `Procedures`/`Functions` de leitura parametrizadas. |
-| `bloco_I.sql` | Análises avançadas com `Window Functions` (`RANK`, `LAG`, `SUM OVER`). |
+A partir de uma base contendo cerca de 100 mil pedidos reais (entre 2016 e 2018), foram elaboradas consultas em **SQL (PostgreSQL)** abrangendo desde a seleção básica de dados até técnicas avançadas como *Subqueries*, *CTEs*, *Views*, *Functions/Procedures* e *Window Functions*.
 
 ---
 
-## 🛠️ Tecnologias e Ferramentas Utilizadas
+## 🚀 Tecnologias e Ferramentas Utilizadas
 
-* **SGBD:** PostgreSQL (Local)
-* **Cliente SQL:** DBeaver Community
-* **Dataset:** Olist Brazilian E-Commerce Dataset (Kaggle)
-
----
-
-## 📈 Principais Insights Encontrados
-
-*(Substitua pelos dados e padrões identificados durante as suas consultas)*
-
-* **Faturamento Geográfico:** Concentração massiva das vendas em estados da Região Sudeste, impulsionada por prazos de frete mais competitivos.
-* **Desempenho de Entregas:** A maior parte dos pedidos é entregue dentro ou antes do prazo estimado, enquanto pedidos atrasados impactam diretamente nas notas das avaliações.
-* **Categorias Críticas:** Identificação de categorias de produtos que registram alto volume de vendas, porém com médias de avaliação abaixo de 3.0.
+- **SGBD:** PostgreSQL (Local)
+- **Cliente SQL:** DBeaver Community
+- **Linguagem:** SQL (DQL - Data Query Language)
+- **Controle de Versão:** Git & GitHub
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 📁 Estrutura do Repositório
 
-1. Clone este repositório:
-   ```bash
-         git clone [https://github.com/LucasSLDEV]([https://https://github.com/LucasSLDEV](https://github.com/LucasSLDEV
+O repositório está organizado em scripts SQL separados conforme os blocos de requisitos do desafio:
+
+```text
+.
+├── bloco_A.sql   # SELECT básico (ORDER BY, DISTINCT, WHERE)
+├── bloco_B.sql   # JOINS (INNER, LEFT JOIN, múltiplas tabelas)
+├── bloco_C.sql   # Funções Agregadas (GROUP BY, HAVING)
+├── bloco_D.sql   # Subqueries (Correlacionadas, NOT EXISTS, COUNT DISTINCT)
+├── bloco_E.sql   # CASE WHEN (Categorizações, prazos, faixas)
+├── bloco_F.sql   # CTEs e Tabelas Temporárias (Variação %, métricas acumuladas)
+├── bloco_G.sql   # Views (vw_pedidos_completos, vw_avaliacoes_categoria)
+├── bloco_H.sql   # Procedures/Functions de Leitura (Parametrizadas)
+├── bloco_I.sql   # Window Functions (RANK, SUM OVER, LAG)
+└── README.md     # Documentação principal do repositório
+💡 Principais Insights de Negócio
+Durante a análise DQL desenvolvida nos blocos de scripts, destacam-se os seguintes achados estratégicos:
+
+Concentração Geográfica de Faturamento: A maior parte do volume de vendas e faturamento está concentrada na região Sudeste, com o estado de São Paulo liderando as métricas de receita total e menor valor médio de frete.
+
+Logística e Prazos de Entrega: O mapeamento via CASE WHEN identificou que a vasta maioria dos pedidos é entregue dentro ou antes do prazo estimado, registrando baixos índices de atrasos críticos.
+
+Avaliação vs. Categorias: Através de CTEs e Views analíticas (vw_avaliacoes_categoria), identificou-se que categorias com alto volume de vendas nem sempre mantêm as melhores notas médias de satisfação, sinalizando oportunidades de melhoria no pós-venda.
+
+Comportamento de Pagamento: O cartão de crédito desponta como o método preferencial de pagamento, havendo predominância de parcelamentos em vendas de categorias de maior ticket médio.
+
+⚙️ Como Executar o Projeto
+Pré-requisitos
+PostgreSQL instalado e configurado localmente.
+
+DBeaver Community (ou outro cliente SQL de sua preferência).
+
+Dataset da Olist baixado no Kaggle.
+
+Passo a Passo
+Clonar o Repositório:
+
+git clone [https://github.com/LucasSLDEV/olist-sql-challenge.git](https://github.com/LucasSLDEV/olist-sql-challenge.git)
+cd olist-sql-challenge
+
+
+Crie um banco de dados no PostgreSQL (ex: olist_db).
+
+Importe os arquivos .csv do dataset via assistente de importação do DBeaver nas tabelas correspondentes (olist_customers_dataset, olist_orders_dataset, etc.).
+
+Execução dos Scripts:
+
+Abra os arquivos bloco_A.sql a bloco_I.sql no DBeaver conectado ao seu banco local e execute as consultas para verificar os resultados.
+
+✉️ Contato e Links
+Autor: Lucas S. L.
+
+GitHub: LucasSLDEV
+
+Plataforma Educacional: Growdev
