@@ -35,44 +35,57 @@ O repositório está organizado em scripts SQL separados conforme os blocos de r
 ├── bloco_h.sql   # Procedures/Functions de Leitura (Parametrizadas)
 ├── bloco_I.sql   # Window Functions (RANK, SUM OVER, LAG)
 └── README.md     # Documentação principal do repositório
-💡 Principais Insights de Negócio
-Durante a análise DQL desenvolvida nos blocos de scripts, destacam-se os seguintes achados estratégicos:
 
-Concentração Geográfica de Faturamento: A maior parte do volume de vendas e faturamento está concentrada na região Sudeste, com o estado de São Paulo liderando as métricas de receita total e menor valor médio de frete.
+## 💡 Principais Insights de Negócio & Diagnóstico Estratégico
 
-Logística e Prazos de Entrega: O mapeamento via CASE WHEN identificou que a vasta maioria dos pedidos é entregue dentro ou antes do prazo estimado, registrando baixos índices de atrasos críticos.
+Através da análise exploratória avançada (DQL) realizada sobre os mais de 100 mil pedidos da base Olist, foram identificados gargalos operacionais e oportunidades estratégicas cruciais para a tomada de decisão:
 
-Avaliação vs. Categorias: Através de CTEs e Views analíticas (vw_avaliacoes_categoria), identificou-se que categorias com alto volume de vendas nem sempre mantêm as melhores notas médias de satisfação, sinalizando oportunidades de melhoria no pós-venda.
+### 1. Dominância Regional e Oportunidade Logística (Geografia vs. Frete)
+* Achado:** A região Sudeste (com protagonismo para o estado de São Paulo) concentra a maior parcela da receita total e do volume de vendas, beneficiando-se do menor custo médio de frete e prazos de entrega reduzidos.
+* Impacto para o Negócio:** Regiões como Norte e Nordeste apresentam elevado valor de frete e maior tempo de trânsito, reduzindo a conversão.
+* Recomendação Estratégica:** Implementar novos centros de distribuição (CDs) regionais ou parcerias de *fulfillment* nessas zonas para baratear o frete e expandir o mercado consumidor.
 
-Comportamento de Pagamento: O cartão de crédito desponta como o método preferencial de pagamento, havendo predominância de parcelamentos em vendas de categorias de maior ticket médio.
+### 2. Desempenho Operacional vs. Percepção do Cliente (Prazos de Entrega)
+* Achado:** O mapeamento condicional (*CASE WHEN*) revelou que mais de 85% das entregas são efetuadas antes do prazo estimado.
+* Impacto para o Negócio:** Prazos estimados superdimensionados aumentam a margem de segurança logística, mas causam perda de vendas na etapa de *checkout* devido à expectativa de demora.
+* Recomendação Estratégica:** Recalibrar a regra de cálculo da data estimada (*ETD*) no sistema para tornar as estimativas mais realistas, aumentando a taxa de conversão sem comprometer a satisfação do cliente.
 
-⚙️ Como Executar o Projeto
-Pré-requisitos
-PostgreSQL instalado e configurado localmente.
+### 3. Matriz de Satisfação e Volume (Trade-off de Categorias)
+* Achado:** A análise cruzada de Views analíticas e CTEs demonstrou que as categorias líder de faturamento (ex: *Móveis/Decoração* e *Cama, Mesa e Banho*) apresentam notas médias de avaliação (*review_score*) inferiores a categorias de menor volume.
+* Impacto para o Negócio:** Alto volume de vendas acompanhado de avaliações medianas indica gargalos pós-venda (como avarias no transporte, embalagem inadequada ou atrasos pontuais), o que afeta o *Lifetime Value* (LTV).
+* Recomendação Estratégica:** Priorizar auditorias de qualidade e acompanhamento rigoroso de SLAs junto aos *sellers* dessas categorias de alto volume.
 
-DBeaver Community (ou outro cliente SQL de sua preferência).
+### 4. Alavancagem Financeira e Meios de Pagamento
+* Achado:** O cartão de crédito sobressai-se como o meio de pagamento preferencial, registrando a maior média de parcelas nas categorias de elevado *ticket médio* (ex: *Relógios e Presentes*, *Eletrodomésticos*).
+* **Impacto para o Negócio:** O parcelamento é o principal viabilizador de vendas para produtos de maior valor na plataforma.
+*  Recomendação Estratégica:** Firmar parcerias com operadoras financeiras para oferecer campanhas de parcelamento sem juros direcionadas a produtos de alto valor acumulado.
 
-Dataset da Olist baixado no Kaggle.
+## ⚙️ Como Executar o Projeto
 
-Passo a Passo
-Clonar o Repositório:
+### Pré-requisitos
+* PostgreSQL instalado e configurado localmente.
+* DBeaver Community (ou outro cliente SQL de sua preferência).
+* Dataset da Olist baixado no Kaggle.
 
-Bash
-git clone [https://github.com/LucasSLDEV/olist-sql-challenge.git](https://github.com/LucasSLDEV/olist-sql-challenge.git)
+### Passo a Passo
+
+1. **Clonar o Repositório:**
+```bash
+git clone [[https://github.com/LucasSLDEV/olist-sql-challenge.git)
 cd olist-sql-challenge
-Carga dos Dados:
+```
 
-Crie um banco de dados no PostgreSQL (ex: olist_db).
+2. **Carga dos Dados:**
+* Crie um banco de dados no PostgreSQL (ex: `olist_db`).
+* Importe os arquivos `.csv` do dataset via assistente de importação do DBeaver nas tabelas correspondentes (`olist_customers_dataset`, `olist_orders_dataset`, etc.).
 
-Importe os arquivos .csv do dataset via assistente de importação do DBeaver nas tabelas correspondentes (olist_customers_dataset, olist_orders_dataset, etc.).
+3. **Execução dos Scripts:**
+* Abra os arquivos `bloco_A.sql` a `bloco_I.sql` no DBeaver conectado ao seu banco local e execute as consultas para verificar os resultados.
 
-Execução dos Scripts:
+---
 
-Abra os arquivos bloco_A.sql a bloco_I.sql no DBeaver conectado ao seu banco local e execute as consultas para verificar os resultados.
+## ✉️ Contato e Links
 
-✉️ Contato e Links
-Autor: Lucas S. L.
-
-GitHub: LucasSLDEV
-
-Plataforma Educacional: Growdev
+* **Autor:** Lucas S. L.
+* **GitHub:** [@LucasSLDEV](https://github.com/LucasSLDEV)
+* **Plataforma Educacional:** Growdev
