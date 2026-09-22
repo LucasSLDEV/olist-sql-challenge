@@ -35,7 +35,6 @@ O repositório está organizado em scripts SQL separados conforme os blocos de r
 ├── bloco_h.sql   # Procedures/Functions de Leitura (Parametrizadas)
 ├── bloco_I.sql   # Window Functions (RANK, SUM OVER, LAG)
 └── README.md     # Documentação principal do repositório
-
 💡 Principais Insights de Negócio
 Durante a análise DQL desenvolvida nos blocos de scripts, destacam-se os seguintes achados estratégicos:
 
@@ -56,7 +55,24 @@ DBeaver Community (ou outro cliente SQL de sua preferência).
 Dataset da Olist baixado no Kaggle.
 
 Passo a Passo
-
 Clonar o Repositório:
-git clone ([https://github.com/LucasSLDEV/olist-sql-challenge](https://github.com/LucasSLDEV/olist-sql-challenge))
+
+Bash
+git clone [https://github.com/LucasSLDEV/olist-sql-challenge.git](https://github.com/LucasSLDEV/olist-sql-challenge.git)
 cd olist-sql-challenge
+Carga dos Dados:
+
+Crie um banco de dados no PostgreSQL (ex: olist_db).
+
+Importe os arquivos .csv do dataset via assistente de importação do DBeaver nas tabelas correspondentes (olist_customers_dataset, olist_orders_dataset, etc.).
+
+Execução dos Scripts:
+
+Abra os arquivos bloco_A.sql a bloco_I.sql no DBeaver conectado ao seu banco local e execute as consultas para verificar os resultados.
+
+✉️ Contato e Links
+Autor: Lucas S. L.
+
+GitHub: LucasSLDEV
+
+Plataforma Educacional: Growdev
