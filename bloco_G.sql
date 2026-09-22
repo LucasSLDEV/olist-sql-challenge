@@ -1,3 +1,53 @@
+-- Bloco G - Questão 1
+-- Criar a view vw_pedidos_completos, consolidando pedido, cliente, itens, pagamento e vendedor, para servir de base a consultas analíticas futuras.
+
+CREATE OR REPLACE VIEW vw_pedidos_completos AS
+SELECT 
+    o.order_id,
+    o.order_status,
+    o.order_purchase_timestamp,
+    o.order_approved_at,
+    o.order_delivered_carrier_date,
+    o.order_delivered_customer_date,
+    o.order_estimated_delivery_date,
+    
+    -- Informações do Cliente
+    c.customer_id,
+    c.customer_unique_id,
+    c.customer_zip_code_prefix,
+    c.customer_city,
+    c.customer_state,
+    
+    -- Informações dos Itens do Pedido
+    i.order_item_id,
+    i.product_id,
+    i.seller_id,
+    i.shipping_limit_date,
+    i.price,
+    i.freight_value,
+    
+    -- Informações do Vendedor
+    s.seller_zip_code_prefix,
+    s.seller_city,
+    s.seller_state,
+    
+    -- Informações de Pagamento (Agregadas por pedido/item)
+    p.payment_type,
+    p.payment_installments,
+    p.payment_value
+
+FROM olist_orders_dataset o
+INNER JOIN olist_customers_dataset c 
+    ON o.customer_id = c.customer_id
+LEFT JOIN olist_order_items_dataset i 
+    ON o.order_id = i.order_id
+LEFT JOIN olist_sellers_dataset s 
+    ON i.seller_id = s.seller_id
+LEFT JOIN olist_order_payments_dataset p 
+    ON o.order_id = p.order_id;
+
+
+
 -- 2. Criar a function sp_relatorio_categoria(categoria, data_inicio, data_fim)
 -- Retorna o faturamento total e o ticket médio de uma categoria de produto no período informado.
 CREATE OR REPLACE FUNCTION sp_relatorio_categoria(
