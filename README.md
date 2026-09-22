@@ -71,7 +71,7 @@ Através da análise exploratória avançada (DQL) realizada sobre os mais de 10
 
 1. **Clonar o Repositório:**
 ```bash
-git clone [[https://github.com/LucasSLDEV/olist-sql-challenge.git)
+git clone https://github.com/LucasSLDEV/olist-sql-challenge.git
 cd olist-sql-challenge
 ```
 
@@ -87,5 +87,5 @@ cd olist-sql-challenge
 ## ✉️ Contato e Links
 
 * **Autor:** Lucas S. L.
-* **GitHub:** [@LucasSLDEV](https://github.com/LucasSLDEV)
+* **GitHub:** [https://github.com/LucasSLDEV/olist-sql-challenge.git](https://github.com/LucasSLDEV)
 * **Plataforma Educacional:** Growdev
