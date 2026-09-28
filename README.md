@@ -16,7 +16,7 @@ A partir de uma base contendo cerca de 100 mil pedidos reais (entre 2016 e 2018)
 - **Cliente SQL:** DBeaver Community
 - **Linguagem:** SQL (DQL - Data Query Language)
 - **Controle de Versão:** Git & GitHub
-
+- **IA: Inteligencia artificial (SUPORTE A DUVIDAS)
 ---
 
 ## 📁 Estrutura do Repositório
@@ -43,7 +43,7 @@ Através da análise exploratória avançada (DQL) realizada sobre os mais de 10
 ### 1. Dominância Regional e Oportunidade Logística (Geografia vs. Frete)
 * Achado:** A região Sudeste (com protagonismo para o estado de São Paulo) concentra a maior parcela da receita total e do volume de vendas, beneficiando-se do menor custo médio de frete e prazos de entrega reduzidos.
 * Impacto para o Negócio:** Regiões como Norte e Nordeste apresentam elevado valor de frete e maior tempo de trânsito, reduzindo a conversão.
-* Recomendação Estratégica:** Implementar novos centros de distribuição (CDs) regionais ou parcerias de *fulfillment* nessas zonas para baratear o frete e expandir o mercado consumidor.
+* Recomendação Estratégica:** Implementar novos centros de distribuição (CDs) regionais ou parcerias de   para baratear o frete e expandir o mercado consumidor.
 
 ### 2. Desempenho Operacional vs. Percepção do Cliente (Prazos de Entrega)
 * Achado:** O mapeamento condicional (*CASE WHEN*) revelou que mais de 85% das entregas são efetuadas antes do prazo estimado.
